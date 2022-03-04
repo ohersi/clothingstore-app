@@ -28,7 +28,7 @@ const Admin = ({ products, fetchProducts }) => {
         setProductToEdit(products)
     }
 
-    console.log(products.data)
+    // console.log(products.data)
 
     return (
         <>
