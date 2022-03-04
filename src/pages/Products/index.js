@@ -1,6 +1,12 @@
-import React from 'react';
+import { useEffect } from "react";
 
-const Products = () => {
+const Products = ({ products, fetchProducts }) => {
+    
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    console.log(products)
     return (
         <div>
             Display All Products
