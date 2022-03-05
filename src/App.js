@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 // Pages
 import Home from './pages/Home';
 import Products from './pages/Products';
+import SingleItem from './pages/SingleItem';
 import Admin from './pages/Admin';
 // CSS
 import './App.css';
@@ -14,6 +15,7 @@ const App = () => {
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [productSelected, setProductSelected ] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -40,12 +42,14 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='products' element={<Products
+        <Route path='collection' element={<Products
           products={products}
           categories={categories}
           fetchProducts={fetchProducts}
           fetchCategories={fetchCategories}
+          setProductSelected={setProductSelected}
         />} />
+        <Route path='/product/:name' element={<SingleItem productSelected={productSelected}/>} />
         <Route path='admin' element={
           <Admin
             products={products}
