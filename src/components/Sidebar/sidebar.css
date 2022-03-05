@@ -1,0 +1,8 @@
+#sidebar-container {
+    background-color: blue;
+    z-index: 100;
+}
+
+.side-bar {
+    background-color: green;
+}

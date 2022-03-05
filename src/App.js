@@ -13,12 +13,23 @@ import './App.css';
 const App = () => {
 
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const fetchProducts = async () => {
     try {
       const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
       setProducts(response);
-    } 
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/categories');
+      setCategories(response);
+    }
     catch (error) {
       console.log(error)
     }
@@ -27,10 +38,21 @@ const App = () => {
   return (
     <div>
       <Nav />
-        <Routes>
+      <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='products' element={<Products products={products} fetchProducts={fetchProducts}/>} />
-        <Route path='admin' element={<Admin products={products} fetchProducts={fetchProducts} />} />
+        <Route path='products' element={<Products
+          products={products}
+          categories={categories}
+          fetchProducts={fetchProducts}
+          fetchCategories={fetchCategories}
+        />} />
+        <Route path='admin' element={
+          <Admin
+            products={products}
+            fetchProducts={fetchProducts}
+            categories={categories}
+            fetchCategories={fetchCategories}
+          />} />
       </Routes>
     </div>
   );

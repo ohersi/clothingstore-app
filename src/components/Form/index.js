@@ -4,9 +4,16 @@ import { productSchema } from '../../validations/ProductsValidation';
 // CSS
 import './form.css'
 
-const Form = ({ fetchProducts, productToEdit, editForm }) => {
+const Form = ({
+    fetchProducts,
+    fetchCategories,
+    categoryToEdit,
+    productToEdit,
+    editForm,
+    toggleSelected }) => {
 
     console.log("Product to edit: ", productToEdit)
+    console.log("Category to edit: ", categoryToEdit)
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -14,8 +21,9 @@ const Form = ({ fetchProducts, productToEdit, editForm }) => {
     const [stock, setStock] = useState('');
     const [category_id, setCategory_Id] = useState('');
 
-    const addOrEditProduct = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         const newProduct = {
             name: name,
             description: description,
@@ -24,19 +32,29 @@ const Form = ({ fetchProducts, productToEdit, editForm }) => {
             stock: stock,
             category_id: category_id
         }
+
+        const newCategory = {
+            name: name,
+            description: description,
+        }
+
         const isValid = await productSchema.isValid(newProduct)
+        console.log("is isValid: ", isValid)
 
         if (isValid) {
             try {
                 if (editForm) {
                     // EDIT - UPDATING PRODUCT
-                    const response = await axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/products/${productToEdit.id}`, newProduct)
-                    console.log("editing product")
+                    toggleSelected ?
+                        await axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/products/${productToEdit.id}`, newProduct) :
+                        await axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/category/${categoryToEdit.id}`, newCategory)
+                    console.log(toggleSelected ? 'product editing url' : "category editing url")
                 }
                 else {
                     // ADDING PROODUCT
-                    const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/addproduct')
-                    console.log("adding product")
+                    const response = toggleSelected ?
+                        await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/addproduct', newProduct)
+                        : axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/addcategory', newCategory)
                     if (response.status === 200) {
                         setName('')
                         setDescription('')
@@ -45,23 +63,24 @@ const Form = ({ fetchProducts, productToEdit, editForm }) => {
                         setStock('')
                         setCategory_Id('')
                     }
+                    console.log(toggleSelected ? "adding product" : "adding category")
                 };
                 fetchProducts();
+                fetchCategories();
             }
             catch (error) {
                 console.log(error)
             }
         }
         else {
-            console.log("Invalid, valid status is: ", isValid);
+            console.log("Invalid input in form");
         }
-
     }
 
     return (
         <>
             <div className='form'>
-                <form onSubmit={addOrEditProduct}>
+                <form onSubmit={handleSubmit}>
                     <div className='field'>
                         <label htmlFor="name">Name</label>
                         <input
