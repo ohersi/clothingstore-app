@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Routes, Route } from 'react-router-dom'
 // Components
 import Nav from './components/Nav';
+import Cart from './components/Cart';
 // Pages
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -15,6 +16,7 @@ const App = () => {
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [cart, setCart] = useState([]);
   const [productSelected, setProductSelected ] = useState([]);
 
   const fetchProducts = async () => {
@@ -23,7 +25,7 @@ const App = () => {
       setProducts(response);
     }
     catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -33,7 +35,17 @@ const App = () => {
       setCategories(response);
     }
     catch (error) {
-      console.log(error)
+      console.error(error)
+    }
+  }
+
+  const fetchCart = async () => {
+    try {
+        const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/cart');
+        setCart(response);
+    } 
+    catch (error) {
+      console.error(error)
     }
   }
 
@@ -57,6 +69,7 @@ const App = () => {
             categories={categories}
             fetchCategories={fetchCategories}
           />} />
+          <Route path='cart' element={<Cart  cart={cart} fetchCart={fetchCart}/>}/>
       </Routes>
     </div>
   );

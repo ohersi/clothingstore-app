@@ -22,8 +22,8 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
                 <div id="products-container">
                     {
                         products.data?.map(product => (
-                            <div className="products-card" onClick={() => setProductSelected(product)}>
-                                <Link to={`/product/${product.name}`} key={product.id} >
+                            <div className="products-card" onClick={() => setProductSelected(product)} key={product.id}>
+                                <Link to={`/product/${product.name}`}  >
                                     <div className="card-info">
                                         <h3>{product.name}</h3>
                                         <img className='products-img' src={product.imageURL} alt={`${product.name} product`} />
