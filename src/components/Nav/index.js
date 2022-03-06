@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
+
+  //TODO - Display either Login or Sign Up component based on whether user is logged in
+  
     return (
         <div>
           <Link to='/'>Home</Link>

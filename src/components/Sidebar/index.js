@@ -10,7 +10,6 @@ const Sidebar = ({ categories }) => {
                 {
                     categories.data?.map(category => (
                         <div className='sidebar' key={category.id}>
-                            <h3>{category.name}</h3>
                             <Link to='/'>{category.name}</Link>
                         </div>
                     ))

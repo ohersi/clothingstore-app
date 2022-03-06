@@ -4,11 +4,8 @@ import React from 'react';
 import './singleItem.css'
 
 const SingleItem = ({ productSelected }) => {
-    //TODO - addToCart and deleteFromCart function, calls respective api
-    //TODO - pass functions down to Cart component
-    //TODO - Add to cart button
-    //TODO - when Add to cart button is pressed, display cart postioned(absolute) on same page
-    //TODO - have if statement in CartService set users_id if foundUser is not null. if(foundUser!=null) -> cart.setUsers_id(foundUsers);
+    
+    // TODO - when Add to cart button is pressed, display cart postioned(absolute) on same page
 
     const addToCart = async (id) => {
         
@@ -34,7 +31,7 @@ const SingleItem = ({ productSelected }) => {
             <div className="item-container">
                 <h1>{productSelected.name}</h1>
                 <img className='item-img' src={productSelected.imageURL} alt={`${productSelected.name}-product`} />
-                <h1>PRODUCT ID - {productSelected.id}</h1>
+                <h1> {productSelected.description}</h1>
                 <button onClick={() => addToCart(productSelected.id)}>ADD TO CART</button>
             </div>
         </>
