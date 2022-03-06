@@ -9,12 +9,17 @@ export const productSchema = yup.object().shape({
     category_id: yup.number().required().positive().integer()
 });
 
-export const userSchema = yup.object().shape({
+export const signUpSchema = yup.object().shape({
     username: yup.string().required("Username is required"),
     firstname: yup.string().required("First Name is required"),
     lastname: yup.string().required("Last Name is required"),
     email: yup.string().email("Must be a valid email address").required("Email is required"),
     password: yup.string().required("Password is required").min(5, "Min password length is 5"),
+});
+
+export const logInSchema = yup.object().shape({
+    username: yup.string().required("Username is required"),
+    password: yup.string().required("Password is required"),
 });
 
 

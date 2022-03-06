@@ -1,0 +1,15 @@
+#login-container {
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+}
+
+.field {
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+span {
+    color: whitesmoke;
+}

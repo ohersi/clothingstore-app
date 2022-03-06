@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 // Validations
-import { userSchema } from '../../validations/Validations';
+import { signUpSchema } from '../../validations/Validations';
 // CSS
 import './signup.css'
 
@@ -15,9 +15,9 @@ const SignUp = () => {
 
     const user = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(userSchema)
+        resolver: yupResolver(signUpSchema)
     });
-    const [signUpSuccess, setSignupSuccess] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const signUpUser = async (data) => {
 
@@ -26,9 +26,9 @@ const SignUp = () => {
             user.setUser(response.data);
             if (response.status === 200) {
                 console.log("user created")
-                setSignupSuccess(true)
+                setSuccess(true)
                 setTimeout(() => {
-                    setSignupSuccess(false)
+                    setSuccess(false)
                     navigate('/collection')
                 }, 2000);
             }
@@ -47,6 +47,7 @@ const SignUp = () => {
                         <input
                             type="text"
                             placeholder="username"
+                            autoComplete="off"
                             {...register("username", { required: true, max: 50, min: 3, maxLength: 50 })}
                         />
                         <span>{errors?.username?.message}</span>
@@ -57,6 +58,7 @@ const SignUp = () => {
                         <input
                             type="text"
                             placeholder="firstname"
+                            autoComplete="off"
                             {...register("firstname", { required: true, max: 100, min: 1, maxLength: 100 })}
                         />
                         <span>{errors?.firstname?.message}</span>
@@ -67,6 +69,7 @@ const SignUp = () => {
                         <input
                             type="text"
                             placeholder="lastname"
+                            autoComplete="off"
                             {...register("lastname", { required: true, max: 100, min: 1, maxLength: 100 })}
                         />
                         <span>{errors?.lastname?.message}</span>
@@ -76,7 +79,9 @@ const SignUp = () => {
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
-                            placeholder="email" {...register("email", { required: true, max: 255, min: 5, maxLength: 255, pattern: /^\S+@\S+$/i })}
+                            placeholder="email" 
+                            autoComplete="off"
+                            {...register("email", { required: true, max: 255, min: 5, maxLength: 255, pattern: /^\S+@\S+$/i })}
                         />
                         <span>{errors?.email?.message}</span>
                     </div>
@@ -85,12 +90,13 @@ const SignUp = () => {
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
-                            placeholder="password" {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
+                            placeholder="password" 
+                            {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
                         />
                         <span>{errors?.password?.message}</span>
                     </div>
                     <input type="submit" />
-                    <h1>{signUpSuccess ? "User has been registered" : null}</h1>
+                    <h1>{success ? "User has been registered" : null}</h1>
                 </form>
             </div>
         </>
