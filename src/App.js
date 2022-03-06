@@ -8,6 +8,8 @@ import Cart from './components/Cart';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import SingleItem from './pages/SingleItem';
+import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
 import Admin from './pages/Admin';
 // CSS
 import './App.css';
@@ -70,6 +72,8 @@ const App = () => {
             fetchCategories={fetchCategories}
           />} />
           <Route path='cart' element={<Cart  cart={cart} fetchCart={fetchCart}/>}/>
+          <Route path='login' element={<LogIn />}/>
+          <Route path='signup' element={<SignUp />}/>
       </Routes>
     </div>
   );
