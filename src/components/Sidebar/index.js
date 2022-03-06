@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom'
 
-const Sidebar = ({ categories }) => {
+const Sidebar = ({ categories, products, setCollection, filterByCategory }) => {
 
     return (
         <>
             <div id='sidebar-container'>
                 <h1>INSIDE SIDEBAR</h1>
+                <h3 onClick={() => setCollection(products)}>All</h3>
                 {
                     categories.data?.map(category => (
                         <div className='sidebar' key={category.id}>
-                            <Link to='/'>{category.name}</Link>
+
+                            <h3 onClick={() => filterByCategory(category.name)}>{category.name}</h3>
                         </div>
                     ))
                 }

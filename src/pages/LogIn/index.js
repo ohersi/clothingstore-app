@@ -18,6 +18,7 @@ const LogIn = () => {
         resolver: yupResolver(logInSchema)
     });
     const [success, setSuccess] = useState(false);
+    const [failed, setFailed] = useState(false)
 
     const logInUser = async (data) => {
 
@@ -35,6 +36,10 @@ const LogIn = () => {
         }
         catch (error) {
             console.error(error)
+            setFailed(true)
+            setTimeout(() => {
+                setFailed(false)
+            }, 2000);
         }
     }
     console.log(user.user)
@@ -64,7 +69,8 @@ const LogIn = () => {
                         <span>{errors?.password?.message}</span>
                     </div>
                     <input type="submit" />
-                    <h1>{success ? "Logged In" : null}</h1>
+                    <h3>{success ? "Logged In" : null}</h3>
+                    <h3>{failed ? "Invalid log-in, please try again" : null}</h3>
                 </form>
             </div>
         </>

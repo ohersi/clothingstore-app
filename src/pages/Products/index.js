@@ -4,7 +4,6 @@ import Sidebar from "../../components/Sidebar";
 import { Link } from 'react-router-dom';
 // CSS
 import './products.css';
-import SingleItem from "../SingleItem";
 
 const Products = ({ products, categories, fetchProducts, fetchCategories, setProductSelected }) => {
 
@@ -13,25 +12,35 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
         fetchCategories();
     }, []);
 
-    // console.log(products)
+    const [collection, setCollection] = useState(products.data)
+    const filterByCategory = (category_id) => {
+        const filteredList = products?.data.filter((product) => {
+            return product?.category_id.name === category_id;
+        });
+        setCollection(filteredList);
+    }
 
     return (
         <>
             <div id="products-main">
-                <Sidebar categories={categories} />
+                <Sidebar 
+                categories={categories} 
+                products={products.data} 
+                setCollection={setCollection}
+                filterByCategory={filterByCategory} 
+                />
                 <div id="products-container">
                     {
-                        products.data?.map(product => (
+                        collection.map(product => (
                             <div className="products-card" onClick={() => setProductSelected(product)} key={product.id}>
                                 <Link to={`/product/${product.name}`}  >
                                     <div className="card-info">
                                         <h3>{product.name}</h3>
                                         <img className='products-img' src={product.imageURL} alt={`${product.name} product`} />
-                                        <h4>{product.price}</h4>
+                                        <h4>{product.price}$</h4>
                                     </div>
                                 </Link>
                             </div>
-
                         ))
                     }
                 </div>
