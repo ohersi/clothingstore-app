@@ -1,17 +1,19 @@
 import axios from 'axios';
-import React from 'react';
+import { useContext} from 'react';
+import UserContext from '../../context/UserContext';
 // CSS
 import './singleItem.css'
 
 const SingleItem = ({ productSelected }) => {
     
     // TODO - when Add to cart button is pressed, display cart postioned(absolute) on same page
+    const user = useContext(UserContext)
 
-    const addToCart = async (id) => {
+    const addToCart = async (id, userID) => {
         
         const cartItem = {
             products_id: id,
-            users_id: 1,
+            users_id: userID,
             quantity: 1
         }
         try {
@@ -32,7 +34,7 @@ const SingleItem = ({ productSelected }) => {
                 <h1>{productSelected.name}</h1>
                 <img className='item-img' src={productSelected.imageURL} alt={`${productSelected.name}-product`} />
                 <h1> {productSelected.description}</h1>
-                <button onClick={() => addToCart(productSelected.id)}>ADD TO CART</button>
+                <button onClick={() => addToCart(productSelected.id, user.user.id)}>ADD TO CART</button>
             </div>
         </>
     );

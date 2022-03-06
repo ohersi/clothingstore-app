@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom'
 // Components
 import Nav from './components/Nav';
 import Cart from './components/Cart';
+// Context
+import UserContext from './context/UserContext';
 // Pages
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -19,6 +21,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState({});
   const [productSelected, setProductSelected ] = useState([]);
 
   const fetchProducts = async () => {
@@ -52,7 +55,8 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
+    <UserContext.Provider value={{user, setUser}}>
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -75,7 +79,9 @@ const App = () => {
           <Route path='login' element={<LogIn />}/>
           <Route path='signup' element={<SignUp />}/>
       </Routes>
-    </div>
+    </UserContext.Provider>
+      
+    </>
   );
 }
 

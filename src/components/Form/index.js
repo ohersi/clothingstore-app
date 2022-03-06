@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { productSchema } from '../../validations/ProductsValidation';
+import { productSchema } from '../../validations/Validations';
 // CSS
 import './form.css'
 
