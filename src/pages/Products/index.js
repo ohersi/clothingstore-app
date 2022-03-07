@@ -31,7 +31,7 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
                 />
                 <div id="products-container">
                     {
-                        collection.map(product => (
+                        collection?.map(product => (
                             <div className="products-card" onClick={() => setProductSelected(product)} key={product.id}>
                                 <Link to={`/product/${product.name}`}  >
                                     <div className="card-info">
