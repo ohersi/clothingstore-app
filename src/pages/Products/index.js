@@ -12,32 +12,37 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
         fetchCategories();
     }, []);
 
-    const [collection, setCollection] = useState(products.data)
+    const [collection, setCollection] = useState([])
     const filterByCategory = (category_id) => {
         const filteredList = products?.data.filter((product) => {
             return product?.category_id.name === category_id;
         });
         setCollection(filteredList);
     }
+    // setTimeout(() => {
+    //     setCollection(products.data)
+    // }, 100);
+
+    console.log(collection)
 
     return (
         <>
             <div id="products-main">
-                <Sidebar 
-                categories={categories} 
-                products={products.data} 
-                setCollection={setCollection}
-                filterByCategory={filterByCategory} 
+                <Sidebar
+                    categories={categories}
+                    products={products.data}
+                    setCollection={setCollection}
+                    filterByCategory={filterByCategory}
                 />
                 <div id="products-container">
                     {
                         collection?.map(product => (
                             <div className="products-card" onClick={() => setProductSelected(product)} key={product.id}>
-                                <Link to={`/product/${product.name}`}  >
+                                <Link className="test" to={`/product/${product.name}`}>
+                                    <img className='products-img' src={product.imageURL} alt={`${product.name} product`} />
                                     <div className="card-info">
                                         <h3>{product.name}</h3>
-                                        <img className='products-img' src={product.imageURL} alt={`${product.name} product`} />
-                                        <h4>{product.price}$</h4>
+                                        <h4>${product.price}</h4>
                                     </div>
                                 </Link>
                             </div>

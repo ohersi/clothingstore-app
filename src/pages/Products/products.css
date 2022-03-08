@@ -1,28 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #products-main {
-    background-color: red;
+    background-color: rgb(235, 235, 235);
+    color: orangered;
     display: grid;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 10% 1fr;
     grid-template-areas: 
     "sidebar products";
+    height: 100vh;
 }
 
 #products-container {
-    background-color: rgb(230, 137, 17);
+    background-color: rgb(235, 235, 235);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 100vw;
-    max-height: 100%;
     grid-area: products;
+    gap: 3rem;
 }
 
 .products-card {
-    border: 1px solid black;
-    background-color: goldenrod;
-    max-width: 50%;
+    background-color: rgba(218, 165, 32, 0.11);
+    max-width: 35%;
+    margin: 10px;
+    
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-info {
+    display: flex;
     gap: 1rem;
 }
 
 .products-img {
-    width: 10%;
+    max-width: 100%;
+    object-fit: contain;
 }

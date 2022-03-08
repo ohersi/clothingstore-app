@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom'
 // Components
@@ -24,7 +24,8 @@ const App = () => {
   const [user, setUser] = useState({});
   const [productSelected, setProductSelected ] = useState([]);
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(
+     async () => {
     try {
       const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
       setProducts(response);
@@ -32,7 +33,7 @@ const App = () => {
     catch (error) {
       console.error(error)
     }
-  }
+  }, [])
 
   const fetchCategories = async () => {
     try {
@@ -57,7 +58,7 @@ const App = () => {
   return (
     <>
     <UserContext.Provider value={{user, setUser}}>
-      <Nav />
+      <Nav cart={cart} fetchCart={fetchCart}/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='collection' element={<Products

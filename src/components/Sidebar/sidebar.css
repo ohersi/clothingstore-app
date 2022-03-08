@@ -1,8 +1,17 @@
 #sidebar-container {
-    background-color: blue;
-    z-index: 100;
+    /* background-color: blue; */
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 6%;
+    gap: 2rem;
+    margin-left: 1rem;
 }
 
-.side-bar {
-    background-color: green;
+.sidebar {
+    /* background-color: green; */
+    /* margin: 1rem; */
 }
