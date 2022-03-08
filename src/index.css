@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* FONTS */
+@font-face {
+    font-family: 'Conta-ExtraLight';
+    src: local('Conta-ExtraLight'),
+    url('./fonts/Consta-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gatwick-Bold';
+    src: local('Gatwick-Bold'),
+    url('./fonts/Gatwick/PPGatwick-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gatwick-Ultralight';
+    src: local('Gatwick-Ultralight'),
+    url('./fonts/Gatwick/PPGatwick-Ultralight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Telegraf-Regular';
+    src: local('Telegraf-Regular'),
+    url('./fonts/Telegraf/PPTelegraf-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Telegraf-UltraBold';
+    src: local('Telegraf-UltraBoldr'),
+    url('./fonts/Telegraf/PPTelegraf-UltraBold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Telegraf-Ultralight';
+    src: local('Telegraf-Ultralight'),
+    url('./fonts/Telegraf/PPTelegraf-UltraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'NeueMontreal-Book';
+    src: local('NeueMontreal-Book'),
+    url('./fonts/NeueMontreal/PPNeueMontreal-Book.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'NeueMontreal-Medium';
+    src: local('NeueMontreal-Medium'),
+    url('./fonts/NeueMontreal/PPNeueMontreal-Medium.otf') format('opentype');
+}
+
+

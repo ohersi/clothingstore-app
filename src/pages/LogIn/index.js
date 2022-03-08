@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // Context
@@ -66,6 +66,7 @@ const LogIn = () => {
                             placeholder="password"
                             {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
                         />
+                        <Link to='/signup'>Don't have an account? Sign Up.</Link>
                         <span>{errors?.password?.message}</span>
                     </div>
                     <input type="submit" />

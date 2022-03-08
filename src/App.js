@@ -22,18 +22,19 @@ const App = () => {
   const [categories, setCategories] = useState([]);
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({});
-  const [productSelected, setProductSelected ] = useState([]);
+  const [productSelected, setProductSelected] = useState([]);
+  const [cartVisible, setCartVisible] = useState(false)
 
   const fetchProducts = useCallback(
-     async () => {
-    try {
-      const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
-      setProducts(response);
-    }
-    catch (error) {
-      console.error(error)
-    }
-  }, [])
+    async () => {
+      try {
+        const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
+        setProducts(response);
+      }
+      catch (error) {
+        console.error(error)
+      }
+    }, [])
 
   const fetchCategories = async () => {
     try {
@@ -47,9 +48,9 @@ const App = () => {
 
   const fetchCart = async () => {
     try {
-        const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/cart');
-        setCart(response);
-    } 
+      const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/cart');
+      setCart(response);
+    }
     catch (error) {
       console.error(error)
     }
@@ -57,31 +58,42 @@ const App = () => {
 
   return (
     <>
-    <UserContext.Provider value={{user, setUser}}>
-      <Nav cart={cart} fetchCart={fetchCart}/>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='collection' element={<Products
-          products={products}
-          categories={categories}
-          fetchProducts={fetchProducts}
-          fetchCategories={fetchCategories}
-          setProductSelected={setProductSelected}
-        />} />
-        <Route path='/product/:name' element={<SingleItem productSelected={productSelected}/>} />
-        <Route path='admin' element={
-          <Admin
+      <UserContext.Provider value={{ user, setUser }}>
+        <Nav cart={cart}
+          cartVisible={cartVisible}
+          fetchCart={fetchCart}
+          setUser={setUser}
+          setCartVisible={setCartVisible} />{
+          cartVisible ?
+            <Cart cart={cart} 
+            cartVisible={cartVisible} 
+            fetchCart={fetchCart} 
+            setCartVisible={setCartVisible}/>
+            : null
+        }
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='collection' element={<Products
             products={products}
-            fetchProducts={fetchProducts}
             categories={categories}
+            fetchProducts={fetchProducts}
             fetchCategories={fetchCategories}
+            setProductSelected={setProductSelected}
           />} />
-          <Route path='cart' element={<Cart  cart={cart} fetchCart={fetchCart}/>}/>
-          <Route path='login' element={<LogIn />}/>
-          <Route path='signup' element={<SignUp />}/>
-      </Routes>
-    </UserContext.Provider>
-      
+          <Route path='/product/:name' element={<SingleItem productSelected={productSelected} fetchCart={fetchCart}/>} />
+          <Route path='admin' element={
+            <Admin
+              products={products}
+              fetchProducts={fetchProducts}
+              categories={categories}
+              fetchCategories={fetchCategories}
+            />} />
+          {/* <Route path='cart' element={<Cart  cart={cart} fetchCart={fetchCart}/>}/> */}
+          <Route path='login' element={<LogIn />} />
+          <Route path='signup' element={<SignUp />} />
+        </Routes>
+      </UserContext.Provider>
+
     </>
   );
 }

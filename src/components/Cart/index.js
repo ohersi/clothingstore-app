@@ -3,7 +3,7 @@ import axios from 'axios';
 // CSS
 import './cart.css';
 
-const Cart = ({ cart, fetchCart }) => {
+const Cart = ({ cart, cartVisible, fetchCart, setCartVisible }) => {
 
     const[quantity, setQuantity] = useState(1);
 
@@ -11,10 +11,10 @@ const Cart = ({ cart, fetchCart }) => {
         fetchCart();
     }, []);
 
-    const deleteFromCart = async (id, users_id) => {
+    const deleteFromCart = async (id) => {
 
         try {
-            const response = await axios.delete(`https://ecommerce-backnd.herokuapp.com/api/v1/deleteitem/${id}?userID=${users_id}`);
+            const response = await axios.delete(`https://ecommerce-backnd.herokuapp.com/api/v1/deleteitem/${id}`);
             if (response.status === 200) {
                 console.log(`item has been deleted!`)
             }
@@ -34,6 +34,7 @@ const Cart = ({ cart, fetchCart }) => {
         try {
             // EDIT CART QUANTITY 
             const response = await axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/updatecart/${id}`, editedCart);
+            console.log("quantity increased")
             if (response.status === 200) {
                 console.log(`item has been updated!`)
             }
@@ -43,26 +44,32 @@ const Cart = ({ cart, fetchCart }) => {
             console.error(error);
         }
     }
-
     console.log(cart)
 
     return (
-        <div>
-            <div id="cart-container">
+        <div id='cart-main'>
+            <div className='cart-container'>
+                <span onClick={() => setCartVisible(!cartVisible)}>X</span>
+                <h1>CART</h1>
                 {
-                    cart.data?.map(item => (
+                    cart?.data?.map(item => (
                         <div className='item-card' key={item.id}>
-                            <h3>{item.products_id.name}</h3>
                             <img className='cart-img' src={item.products_id.imageURL} alt={`${item.products_id.name}-product`} />
-                            <h2>{item.products_id.price}</h2>
-                            <h3>{item.quantity}</h3>
-                            <div className="btn-container">
-                                <button onClick={() => deleteFromCart(item.id, item.users_id.id)}>X</button>
-                                <button onClick={() => setQuantity(quantity > 1 ? quantity-1 : 1)}>-</button>
-                                <button onClick={() => setQuantity(quantity+1)}>+</button>
-                                <button onClick={() => finalCheckout(item.id, quantity)}>CHECK OUT</button>
-                                <h1>The QuantityCounter is: {quantity}</h1>
+                            <div className="cart-info">
+                               <h3 className='cart-name'>{item.products_id.name}</h3>
+                            <h2 className='cart-price'>${item.products_id.price}</h2> 
                             </div>
+                            <h3>Quantity: {item.quantity}</h3>
+                            <div className="btn-container">
+                                <div className="quantity-container">
+                                  <button className='cart-btn' onClick={() => setQuantity(quantity > 1 ? quantity-1 : 1)}>-</button>
+                                <h3>{quantity}</h3>
+                                <button className='cart-btn' onClick={() => setQuantity(quantity+1)}>+</button>  
+                                </div>
+                                <button className='cart-btn' onClick={() => deleteFromCart(item.id)}>X</button>
+                            </div>
+                                
+                                <button onClick={() => finalCheckout(item.id, quantity)}>Add to Cart</button>
                         </div>
                     ))
                 }

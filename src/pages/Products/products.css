@@ -3,18 +3,25 @@
     padding: 0;
 }
 
+body {
+    background-color: #f7f6f2;
+}
+
 #products-main {
-    background-color: rgb(235, 235, 235);
-    color: orangered;
+    background-color: #f7f6f2;
+    color: #f74c25;
     display: grid;
     grid-template-columns: 10% 1fr;
     grid-template-areas: 
     "sidebar products";
     height: 100vh;
+    font-family: 'Telegraf-Regular';
+    font-size: 22px;
+    margin-top: 4rem;
 }
 
 #products-container {
-    background-color: rgb(235, 235, 235);
+    /* background-color: rgb(235, 235, 235); */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,7 +30,9 @@
 }
 
 .products-card {
-    background-color: rgba(218, 165, 32, 0.11);
+    /* background-color: rgba(218, 165, 32, 0.11); */
+    /* border: 1px solid black; */
+    font-size: 22px;
     max-width: 35%;
     margin: 10px;
     

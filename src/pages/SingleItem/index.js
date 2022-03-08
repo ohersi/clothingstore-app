@@ -4,7 +4,7 @@ import UserContext from '../../context/UserContext';
 // CSS
 import './singleItem.css'
 
-const SingleItem = ({ productSelected }) => {
+const SingleItem = ({ productSelected, fetchCart }) => {
     
     // TODO - when Add to cart button is pressed, display cart postioned(absolute) on same page
     const user = useContext(UserContext)
@@ -21,6 +21,7 @@ const SingleItem = ({ productSelected }) => {
             if (response.status === 200) {
                 console.log(`item has been added to cart!`)
             }
+            fetchCart();
         }
         catch (error) {
             console.log(error);

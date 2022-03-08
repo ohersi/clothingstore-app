@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import UserContext from '../../context/UserContext';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 // Validations
@@ -93,6 +93,7 @@ const SignUp = () => {
                             placeholder="password" 
                             {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
                         />
+                         <Link to='/login'>Already have an account? Log in.</Link>
                         <span>{errors?.password?.message}</span>
                     </div>
                     <input type="submit" />
