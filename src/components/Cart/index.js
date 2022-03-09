@@ -50,16 +50,16 @@ const Cart = ({ cart, cartVisible, fetchCart, setCartVisible }) => {
         <div id='cart-main'>
             <div className='cart-container'>
                 <span onClick={() => setCartVisible(!cartVisible)}>X</span>
-                <h1>CART</h1>
+                <h1 id='cart-title'>CART</h1>
                 {
                     cart?.data?.map(item => (
                         <div className='item-card' key={item.id}>
-                            <img className='cart-img' src={item.products_id.imageURL} alt={`${item.products_id.name}-product`} />
                             <div className="cart-info">
+                            <img className='cart-img' src={item.products_id.imageURL} alt={`${item.products_id.name}-product`} />
                                <h3 className='cart-name'>{item.products_id.name}</h3>
-                            <h2 className='cart-price'>${item.products_id.price}</h2> 
+                            <h4 className='cart-price'>${item.products_id.price}</h4> 
+                            {/* <h4>Q: {item.quantity}</h4> */}
                             </div>
-                            <h3>Quantity: {item.quantity}</h3>
                             <div className="btn-container">
                                 <div className="quantity-container">
                                   <button className='cart-btn' onClick={() => setQuantity(quantity > 1 ? quantity-1 : 1)}>-</button>
@@ -67,9 +67,9 @@ const Cart = ({ cart, cartVisible, fetchCart, setCartVisible }) => {
                                 <button className='cart-btn' onClick={() => setQuantity(quantity+1)}>+</button>  
                                 </div>
                                 <button className='cart-btn' onClick={() => deleteFromCart(item.id)}>X</button>
+                                <button onClick={() => finalCheckout(item.id, quantity)}>Add to Cart</button>
                             </div>
                                 
-                                <button onClick={() => finalCheckout(item.id, quantity)}>Add to Cart</button>
                         </div>
                     ))
                 }

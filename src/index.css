@@ -52,4 +52,20 @@
     url('./fonts/NeueMontreal/PPNeueMontreal-Medium.otf') format('opentype');
 }
 
+/* SCROLLBAR */
+* ::-webkit-scrollbar-track {
+    background: #f7f6f2;
+    }
+    * ::-webkit-scrollbar-thumb {
+      background: #f74c25;
+      border-radius: 100vw;
+      }
+      * ::-webkit-scrollbar-thumb:hover {
+        background: #d84220;
+        }
+    
+    * ::-webkit-scrollbar {
+      /* display: none */
+      width: 0.45rem;
+    }
 

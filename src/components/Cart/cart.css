@@ -1,18 +1,40 @@
 #cart-main {
-    background-color: rgb(0, 0, 0);
+    background-color: #f74c25;
     position: fixed;
     right: 0px;
     top: 0;
     width: 45%;
     height: 100%;
     font-family: 'Telegraf-Regular';
-    color: white;
+    color: #f7f6f2;
     /* overflow-y: scroll; */
 }
 
+div#cart-main::-webkit-scrollbar-track {
+    background: #f74c25;
+    }
+    div#cart-main::-webkit-scrollbar-thumb {
+      background: #f7f4f2;
+      border-radius: 100vw;
+      }
+      div#cart-main::-webkit-scrollbar-thumb:hover {
+        background: #c7c5c5;
+        }
+    
+        div#cart-main::-webkit-scrollbar {
+      /* display: none */
+      width: 0.45rem;
+    }
+
+#cart-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
 
 .cart-container {
-    margin: 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,32 +47,30 @@ span {
     font-size: 20px;
 }
 
-.cart-img {
-    max-width: 4rem;
-}
-
 .item-card {
     margin: 0.4rem;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-areas: 
+    'info btn';
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
 }
 
+.cart-img {
+    max-width: 4rem;
+    margin-right: 1rem;
+}
 .cart-info {
     display: flex;
-    flex-direction: column;
-    margin-top: 1.5rem;
+    grid-area: info;
 }
 
 .btn-container {
     display: flex;
     justify-content: space-around;
     gap: 0.5rem;
-    width: 7rem;
-    /* background-color: green; */
-    /* border: 1px solid white;
-    border-radius: 500px; */
+    align-items: center;
+    grid-area: btn;
 }
 
 .quantity-container {
