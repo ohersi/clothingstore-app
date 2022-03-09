@@ -7,6 +7,7 @@ import './products.css';
 
 const Products = ({ products, categories, fetchProducts, fetchCategories, setProductSelected }) => {
 
+    const [test, setTest] = useState('COLLECTION')
     useEffect(() => {
         fetchProducts();
         fetchCategories();
@@ -39,9 +40,12 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
                     products={products.data}
                     setCollection={setCollection}
                     filterByCategory={filterByCategory}
+                    setTest={setTest}
                 />
                 <div id="products-container">
-                    { 
+                    <div id="products-title">{test}</div>
+                    <div className="products-grid">
+                           { 
                     collection == undefined ? <h1>Loading</h1> :
                         collection.map(product => (
                             <div className="products-card" onClick={() => setProductSelected(product)} key={product.id}>
@@ -55,6 +59,8 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
                             </div>
                         ))
                     }
+                    </div>
+                 
                 </div>
             </div>
 

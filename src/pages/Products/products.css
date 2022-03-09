@@ -20,13 +20,29 @@ body {
     margin-top: 4rem;
 }
 
+#products-title {
+    display: flex;
+    margin-top: 1.5rem;
+    font-size: 5rem;
+}
+
 #products-container {
     /* background-color: rgb(235, 235, 235); */
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     grid-area: products;
+    gap: 2rem;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 3rem;
+    height: 100vh;
 }
 
 .products-card {
