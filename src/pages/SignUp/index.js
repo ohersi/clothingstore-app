@@ -40,65 +40,80 @@ const SignUp = () => {
 
     return (
         <>
-            <div id="signup-container">
-                <form onSubmit={handleSubmit(signUpUser)}>
-                    <div className="field">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            placeholder="username"
-                            autoComplete="off"
-                            {...register("username", { required: true, max: 50, min: 3, maxLength: 50 })}
-                        />
-                        <span>{errors?.username?.message}</span>
-                    </div>
+            <div id="signup-main">
+                <div className='txt-1'>
+                    Hello
+                </div>
+                <div className='txt-2'>
+                    There
+                </div>
+                <div id="signup-container">
+                    <form onSubmit={handleSubmit(signUpUser)}>
+                        <div className="field">
+                            <label htmlFor="username">Username</label>
+                            <input
+                                className='input'
+                                type="text"
+                                placeholder="username"
+                                autoComplete="off"
+                                {...register("username", { required: true, max: 50, min: 3, maxLength: 50 })}
+                            />
+                            <span className='error'>{errors?.username?.message}</span>
+                        </div>
 
-                    <div className="field">
-                        <label htmlFor="firstname">First Name</label>
-                        <input
-                            type="text"
-                            placeholder="firstname"
-                            autoComplete="off"
-                            {...register("firstname", { required: true, max: 100, min: 1, maxLength: 100 })}
-                        />
-                        <span>{errors?.firstname?.message}</span>
-                    </div>
+                        <div className="field">
+                            <label htmlFor="firstname">First Name</label>
+                            <input
+                                className='input'
+                                type="text"
+                                placeholder="firstname"
+                                autoComplete="off"
+                                {...register("firstname", { required: true, max: 100, min: 1, maxLength: 100 })}
+                            />
+                            <span className='error'>{errors?.firstname?.message}</span>
+                        </div>
 
-                    <div className="field">
-                        <label htmlFor="lastname">Last Name</label>
-                        <input
-                            type="text"
-                            placeholder="lastname"
-                            autoComplete="off"
-                            {...register("lastname", { required: true, max: 100, min: 1, maxLength: 100 })}
-                        />
-                        <span>{errors?.lastname?.message}</span>
-                    </div>
+                        <div className="field">
+                            <label htmlFor="lastname">Last Name</label>
+                            <input
+                                className='input'
+                                type="text"
+                                placeholder="lastname"
+                                autoComplete="off"
+                                {...register("lastname", { required: true, max: 100, min: 1, maxLength: 100 })}
+                            />
+                            <span className='error'>{errors?.lastname?.message}</span>
+                        </div>
 
-                    <div className="field">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            placeholder="email" 
-                            autoComplete="off"
-                            {...register("email", { required: true, max: 255, min: 5, maxLength: 255, pattern: /^\S+@\S+$/i })}
-                        />
-                        <span>{errors?.email?.message}</span>
-                    </div>
+                        <div className="field">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                className='input'
+                                type="email"
+                                placeholder="email"
+                                autoComplete="off"
+                                {...register("email", { required: true, max: 255, min: 5, maxLength: 255, pattern: /^\S+@\S+$/i })}
+                            />
+                            <span className='error'>{errors?.email?.message}</span>
+                        </div>
 
-                    <div className="field">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            placeholder="password" 
-                            {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
-                        />
-                         <Link to='/login'>Already have an account? Log in.</Link>
-                        <span>{errors?.password?.message}</span>
-                    </div>
-                    <input type="submit" />
-                    <h1>{success ? "User has been registered" : null}</h1>
-                </form>
+                        <div className="field">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                className='input'
+                                type="password"
+                                placeholder="password"
+                                {...register("password", { required: true, max: 100, min: 5, maxLength: 100 })}
+                            />
+                            <Link to='/login'>Already have an account? Log in.</Link>
+                            <span className='error'>{errors?.password?.message}</span>
+                        </div>
+                        <button className='submit-btn'>
+                            <input type="submit" />
+                        </button>
+                        <h1>{success ? "User has been registered" : null}</h1>
+                    </form>
+                </div>
             </div>
         </>
     );

@@ -1,16 +1,52 @@
+
+#signup-main {
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    'txt1 signup txt2'; 
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.txt-1 {
+    grid-area: txt1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f74c25;
+    margin-top: 4rem;
+    font-family: 'Conta-ExtraLight';
+    color: #f7f6f2;
+    font-size: 11rem;
+    text-decoration: underline;
+}
+
+.txt-2 {
+    grid-area: txt2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f74c25;
+    margin-top: 4rem;
+    font-family: 'Conta-ExtraLight';
+    color: #f7f6f2;
+    font-size: 11rem;
+    text-decoration: underline;
+}
+
 #signup-container {
-    background-color: gray;
+    /* background-color: #f74c255b; */
     display: flex;
     justify-content: center;
     margin-top: 4rem;
+    font-family: 'Telegraf-Regular';
+    color: #f74c25;
+    align-items: center;
+    grid-area: signup;
 }
 
 .field {
     flex-direction: column;
     display: flex;
     margin-bottom: 1rem;
-}
-
-span {
-    color: white;
+    gap: 1rem;
 }

@@ -47,7 +47,7 @@ const LogIn = () => {
     return (
         <>
             <div id="login-main">
-                <div id="image">
+                <div id="box-txt">
                    This way...
                 </div>
                 <div id="login-container">
