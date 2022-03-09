@@ -5,10 +5,13 @@ import './home.css'
 const Home = () => {
     return (
         <>
-        <div className='home-container'>
-            Home Page
-        </div>
-            
+            <div className='home-container'>
+                <div id='main-txt'>
+                    Catalogue
+                </div>
+                <span className='txt right'>of things</span>
+            </div>
+
         </>
     );
 }

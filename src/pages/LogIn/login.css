@@ -1,16 +1,70 @@
+
+#login-main {
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    'img login'; 
+    grid-template-columns: 60% 40%;
+}
+
 #login-container {
-    background-color: lightcoral;
+    /* background-color: rgba(240, 128, 128, 0.178); */
+    color: #f74c25;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    font-family: 'Telegraf-Regular';
+    grid-area: login;
+}
+
+#image {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: #f74c25;
     margin-top: 4rem;
+    grid-area: img;
+    font-family: 'Conta-ExtraLight';
+    color: #f7f6f2;
+    font-size: 12rem;
+}
+
+#login-text {
+    font-size: 27px;
+    position: relative;
+    font-weight: bold;
+    bottom: 4.5rem;
 }
 
 .field {
     flex-direction: column;
     display: flex;
     margin-bottom: 1rem;
+    gap: 1rem;
 }
 
-span {
-    color: whitesmoke;
+.input {
+    background-color: #f7f6f2;
+    color: #f74c25;
+    border: 1px solid #f74c25;
+}
+
+.submit-btn {
+    border: 1px solid #f74c25;
+    border-radius: 500px;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+}
+
+.popup-txt {
+    margin-top: 1.5rem;
+}
+
+.error {
+    color: #f74c25;
+    font-size: 14px;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
 }
