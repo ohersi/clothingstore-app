@@ -22,3 +22,7 @@ table.GeneratedTable thead {
 .image {
     width: 5rem;
 }
+
+#admin-main {
+  margin-top: 4rem;
+}

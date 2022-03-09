@@ -52,7 +52,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
     }
 
     return (
-        <>
+        <><div id="admin-main">
             <Form
                 fetchProducts={fetchProducts}
                 fetchCategories={fetchCategories}
@@ -105,7 +105,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
                                         <span onClick={() => deleteProduct(products.id)}>X</span>
                                     </td>
                                     <td data-label="Select">
-                                        { toggleSelected ? 'ON': 'OFF'}
+                                        {toggleSelected ? 'ON' : 'OFF'}
                                     </td>
                                 </tr>
                             ))
@@ -141,7 +141,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
                                         <span onClick={() => deleteCategory(category.id)}>X</span>
                                     </td>
                                     <td data-label="Select">
-                                        { !toggleSelected ? 'ON': 'OFF'}
+                                        {!toggleSelected ? 'ON' : 'OFF'}
                                     </td>
                                 </tr>
                             ))
@@ -149,7 +149,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
                     </tbody>
                 </table>
             </div>
-
+        </div>
         </>
     )
 }

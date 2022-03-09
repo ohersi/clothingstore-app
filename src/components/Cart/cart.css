@@ -26,7 +26,7 @@ span {
 }
 
 .cart-img {
-    width: 20%;
+    max-width: 4rem;
 }
 
 .item-card {
@@ -59,9 +59,4 @@ span {
     width: 5rem;
     border: 1px solid white;
     border-radius: 500px;
-}
-
-.cart-btn {
-    /* background-color: red;
-    gap: 2rem; */
 }
