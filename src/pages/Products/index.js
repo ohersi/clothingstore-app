@@ -13,7 +13,7 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
         fetchCategories();
     }, []);
 
-    const [collection, setCollection] = useState(products.data);
+    const [collection, setCollection] = useState([]);
 
     const filterByCategory = (category_id) => {
         const filteredList = products?.data.filter((product) => {
@@ -22,11 +22,11 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
         setCollection(filteredList);
     };
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setCollection(products.data)
-    //     }, 100);
-    // }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setCollection(products.data)
+        }, 100);
+    }, [products]);
 
 
 

@@ -21,7 +21,7 @@ const Nav = ({ cart, cartVisible, fetchCart, setUser, setCartVisible }) => {
 
   let intialPrice = 0;
   setTimeout(() => {
-    setPrice(cartTotalPrice.reduce((i, j) => i + j, intialPrice))
+    setPrice(cartTotalPrice?.reduce((i, j) => i + j, intialPrice))
   }, 50);
 
   const isEmpty = (user) => {
