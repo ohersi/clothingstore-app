@@ -23,7 +23,7 @@ body {
 #products-title {
     display: flex;
     margin-top: 1.5rem;
-    font-size: 5rem;
+    font-size: clamp(3.2rem, 2.2316rem + 4.132vw, 5rem);
 }
 
 #products-container {
@@ -41,7 +41,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
     height: 100vh;
 }
 
@@ -57,15 +57,27 @@ body {
 .products-name {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .card-info {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.3rem;
+    
 }
 
 .products-img {
     max-width: 100%;
     object-fit: contain;
 }
+
+@media screen and (max-width: 864px) {
+    #products-main {
+        grid-template-columns: 1fr;
+    }
+
+    #products-title {
+        display: flex;
+    }
+
+  }

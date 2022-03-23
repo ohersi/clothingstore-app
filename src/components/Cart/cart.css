@@ -3,11 +3,11 @@
     position: fixed;
     right: 0px;
     top: 0;
-    width: 45%;
+    max-width: 30rem;
     height: 100%;
     font-family: 'Telegraf-Regular';
     color: #f7f6f2;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 div#cart-main::-webkit-scrollbar-track {
@@ -57,7 +57,7 @@ span {
 }
 
 .cart-img {
-    max-width: 4rem;
+    max-height: 10rem;
     margin-right: 1rem;
 }
 .cart-info {
@@ -65,7 +65,7 @@ span {
     grid-area: info;
 }
 
-.btn-container {
+.cart-btn-container {
     display: flex;
     justify-content: space-around;
     gap: 0.5rem;
@@ -79,4 +79,12 @@ span {
     width: 5rem;
     border: 1px solid white;
     border-radius: 500px;
+}
+
+@media (max-width: 422px ) {
+    .cart-info {
+        display: flex;
+        flex-wrap: wrap;
+        grid-area: info;
+    }
 }
