@@ -7,7 +7,7 @@ import './cart.css';
 const Cart = ({ cart, cartVisible, fetchCart, setCartVisible, setGuestCart }) => {
 
     const [quantity, setQuantity] = useState(1);
-    const localStorageCart = JSON.parse(localStorage.getItem("cart")) || "[]"
+    const localStorageCart = JSON.parse(localStorage.getItem("cart")) || []
 
     const user = useContext(UserContext)
 
