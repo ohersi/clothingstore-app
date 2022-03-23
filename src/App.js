@@ -50,7 +50,7 @@ const App = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/cart');
+      const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/cart');
       setCart(response);
     }
     catch (error) {
