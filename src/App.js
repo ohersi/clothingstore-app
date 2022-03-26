@@ -23,14 +23,13 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [guestCart, setGuestCart] = useState([]);
   const [user, setUser] = useState([]);
-  const [guestUserID, setGuestUserID] = useState([]);
   const [productSelected, setProductSelected] = useState([]);
-  const [cartVisible, setCartVisible] = useState(false)
+  const [cartVisible, setCartVisible] = useState(false);
 
   const fetchProducts = useCallback(
     async () => {
       try {
-        const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
+        const response = await axios.get('http://localhost:8080/api/v1/collection/all');
         setProducts(response);
       }
       catch (error) {
@@ -47,30 +46,25 @@ const App = () => {
       console.error(error)
     }
   }
+  const options = {
+    method: 'GET',
+    url: 'http://localhost:8080/api/v1/cart',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${user[0]?.token}`
+    }
+  };
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/cart');
+      const response = await axios.request(options);
       setCart(response);
     }
     catch (error) {
       console.error(error)
     }
   }
-
-  // const fetchGuestUserID = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:8080/api/v1/test');
-  //     setGuestUserID(response.data);
-  //   }
-  //   catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchGuestUserID();
-  // }, []);
+  console.log(user)
 
   return (
     <>

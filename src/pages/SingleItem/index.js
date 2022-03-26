@@ -40,7 +40,13 @@ const SingleItem = ({ productSelected, fetchCart, setGuestCart }) => {
         }
         else {
             try {
-                const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/addtocart', cartItem);
+                const options = {
+                    headers: {
+                      Accept: 'application/json',
+                      Authorization: `Bearer ${user.user[0]?.token}`
+                    }
+                  };
+                const response = await axios.post('http://localhost:8080/api/v1/addtocart', cartItem, options);
                 if (response.status === 200) {
                     console.log(`item has been added to cart!`)
                 }

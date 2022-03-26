@@ -60,7 +60,7 @@ const Nav = ({ cart, guestCart, cartVisible, fetchCart, setUser, setCartVisible 
                 : null
             }
             {
-              !emptyUserObj ? <div className='hidden md:flex py-4' onClick={() => setUser({})}>Log Out || {user.user.username}</div>
+              !emptyUserObj ? <div className='hidden md:flex py-4' onClick={() => setUser([])}>Log Out || {user?.user[0]?.username}</div>
                 :
                 <>
                   <Link className='hidden md:flex py-4' to='login'>ACCOUNT</Link>
