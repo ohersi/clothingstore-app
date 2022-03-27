@@ -1,5 +1,5 @@
 .home-container {
-    font-size: 11rem;
+    font-size: clamp(5.3rem, 3.6034rem + 8.3525vw, 13rem);
     font-family: 'Conta-ExtraLight';
     color: #f74c25;
     /* background-color: rgba(0, 0, 0, 0.253); */
@@ -13,13 +13,13 @@
 }
 
 #main-txt {
-    height: 12rem;
+    height: min(13%, 12rem);
     display: flex;
     align-items: center;
 }
 
 .txt {
-    font-size: 5rem;
+    font-size: clamp(3rem, 2.339rem + 3.2542vw, 6rem);
     color: #f74c25;
     text-decoration: underline;
 }
