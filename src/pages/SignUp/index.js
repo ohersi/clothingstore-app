@@ -22,7 +22,7 @@ const SignUp = () => {
     const signUpUser = async (data) => {
 
         try {
-            const response = await axios.post('http://localhost:8080/api/v1/register', data)
+            const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/register', data)
             user.setUser([response.data]);
             if (response.status === 200) {
                 console.log("user created")

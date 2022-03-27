@@ -33,7 +33,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCartVisible, setGuestCart }) =>
             try {
                 const options = {
                     method: 'DELETE',
-                    url: `http://localhost:8080/api/v1/deleteitem/${id}`,
+                    url: `https://ecommerce-backnd.herokuapp.com/api/v1/deleteitem/${id}`,
                     headers: {
                       Accept: 'application/json',
                       Authorization: `Bearer ${user.user[0]?.token}`
@@ -64,7 +64,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCartVisible, setGuestCart }) =>
                   Authorization: `Bearer ${user.user[0]?.token}`
                 }
               };
-            const response = await axios.put(`http://localhost:8080/api/v1/updatecart/${id}`, editedCart, options);
+            const response = await axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/updatecart/${id}`, editedCart, options);
             console.log("quantity increased")
             if (response.status === 200) {
                 console.log(`item has been updated!`)
@@ -75,9 +75,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCartVisible, setGuestCart }) =>
             console.error(error);
         }
     }
-
-    console.log(!user.user.length ? "empty" : "full")
-
+    
     return (
         <div id='cart-main'>
             <div className='cart-container'>

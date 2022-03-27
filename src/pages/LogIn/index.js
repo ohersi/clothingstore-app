@@ -23,7 +23,7 @@ const LogIn = () => {
     const logInUser = async (data) => {
 
         try {
-            const response = await axios.post('http://localhost:8080/api/v1/login', data)
+            const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/login', data)
             user.setUser([response.data]);
             if (response.status === 200) {
                 console.log("user logged in")
@@ -42,8 +42,7 @@ const LogIn = () => {
             }, 2000);
         }
     }
-    console.log(user.user)
-
+    
     return (
         <>
             <div id="login-main">

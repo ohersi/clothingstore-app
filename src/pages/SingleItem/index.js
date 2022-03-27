@@ -7,7 +7,6 @@ import './singleItem.css'
 
 const SingleItem = ({ productSelected, fetchCart, setGuestCart }) => {
 
-    // TODO - when Add to cart button is pressed, display cart postioned(absolute) on same page
     const user = useContext(UserContext);
 
     const addToCart = async (id, userID) => {
@@ -42,11 +41,11 @@ const SingleItem = ({ productSelected, fetchCart, setGuestCart }) => {
             try {
                 const options = {
                     headers: {
-                      Accept: 'application/json',
-                      Authorization: `Bearer ${user.user[0]?.token}`
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${user.user[0]?.token}`
                     }
-                  };
-                const response = await axios.post('http://localhost:8080/api/v1/addtocart', cartItem, options);
+                };
+                const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/addtocart', cartItem, options);
                 if (response.status === 200) {
                     console.log(`item has been added to cart!`)
                 }

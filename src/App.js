@@ -29,7 +29,7 @@ const App = () => {
   const fetchProducts = useCallback(
     async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/collection/all');
+        const response = await axios.get('https://ecommerce-backnd.herokuapp.com/api/v1/collection/all');
         setProducts(response);
       }
       catch (error) {
@@ -46,9 +46,10 @@ const App = () => {
       console.error(error)
     }
   }
+
   const options = {
     method: 'GET',
-    url: 'http://localhost:8080/api/v1/cart',
+    url: 'https://ecommerce-backnd.herokuapp.com/api/v1/cart',
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${user[0]?.token}`
@@ -64,7 +65,6 @@ const App = () => {
       console.error(error)
     }
   }
-  console.log(user)
 
   return (
     <>
