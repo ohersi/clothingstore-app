@@ -80,6 +80,11 @@
         align-items: center;
         gap: 1rem;
     }
+
+    .item-info {
+        padding: 1rem;
+    }
+    
     .back-btn-container {
         display: none;
     }
