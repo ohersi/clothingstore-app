@@ -13,6 +13,7 @@ import SingleItem from './pages/SingleItem';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Admin from './pages/Admin';
+import Profile from './pages/Profile';
 // CSS
 import './App.css';
 
@@ -107,6 +108,7 @@ const App = () => {
           {/* <Route path='cart' element={<Cart  cart={cart} fetchCart={fetchCart}/>}/> */}
           <Route path='login' element={<LogIn />} />
           <Route path='signup' element={<SignUp />} />
+          <Route path='profile' element={<Profile />} />
         </Routes>
       </UserContext.Provider>
 

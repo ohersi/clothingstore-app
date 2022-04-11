@@ -62,6 +62,7 @@
   }
   #signup-container {
       grid-area: 1 / 1/ 2 / 2;
+      margin-top: 6.5rem;
   }
 
   .txt-1 {

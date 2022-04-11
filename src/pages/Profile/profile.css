@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#profile-main {
+    margin-top: 4rem;
+    font-family: 'Telegraf-Regular';
+    background-color: #f7f6f2;
+    color: #f74c25;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin: 1.1rem;
+    gap: 0.8rem;
+}
+
+.title {
+    font-size: 28px;
+}

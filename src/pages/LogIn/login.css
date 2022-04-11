@@ -70,7 +70,7 @@
     justify-content: center;
 }
 
-@media screen and (max-width: 522px) {
+@media screen and (max-width: 767px) {
     #login-main {
         display: flex;
         flex-direction: column-reverse;

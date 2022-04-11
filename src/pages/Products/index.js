@@ -28,10 +28,6 @@ const Products = ({ products, categories, fetchProducts, fetchCategories, setPro
         }, 100);
     }, [products]);
 
-
-
-    console.log(collection)
-
     return (
         <>
             <div id="products-main">
