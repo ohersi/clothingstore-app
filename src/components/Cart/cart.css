@@ -81,6 +81,14 @@ span {
     border-radius: 500px;
 }
 
+#checkout-btn {
+    margin-top: 3rem;
+    border: 1px solid white;
+    border-radius: 500px;
+    font-size: 20px;
+    height: 3rem;
+}
+
 @media (max-width: 422px ) {
     .cart-info {
         display: flex;

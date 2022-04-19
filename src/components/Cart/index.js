@@ -155,7 +155,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
         console.log(checkoutCart);
         console.log(item)
 
-        const response = await axios.post(`https://catalogue-of-things-shop.netlify.app/api/v1/create-checkout-session`, checkoutCart);
+        const response = await axios.post(`https://ecommerce-backnd.herokuapp.com/api/v1/create-checkout-session`, checkoutCart);
         console.log(response);
         window.location.replace(`${response.data.session_url}`);
     }
@@ -203,7 +203,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
                             </div>
                         ))
                 }
-                <button onClick={() => {stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart)}}>Check Out</button>
+                <button id='checkout-btn' onClick={() => {stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart)}}>Check Out</button>
             </div>
         </div>
     );
