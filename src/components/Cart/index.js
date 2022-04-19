@@ -203,8 +203,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
                             </div>
                         ))
                 }
-                <button onClick={() => updateCartQuantity(cart)}>Check Out</button>
-                <button onClick={() => {stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart)}}>TEST</button>
+                <button onClick={() => {stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart)}}>Check Out</button>
             </div>
         </div>
     );
