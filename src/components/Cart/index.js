@@ -155,7 +155,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
         console.log(checkoutCart);
         console.log(item)
 
-        const response = await axios.post(`http://localhost:8080/api/v1/create-checkout-session`, checkoutCart);
+        const response = await axios.post(`https://catalogue-of-things-shop.netlify.app/api/v1/create-checkout-session`, checkoutCart);
         console.log(response);
         window.location.replace(`${response.data.session_url}`);
     }
