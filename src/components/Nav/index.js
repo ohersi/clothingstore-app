@@ -32,7 +32,7 @@ const Nav = ({ cart, guestCart, cartVisible, fetchCart, setUser, setCartVisible 
 
   // USER CART
   const cartQuantity = cart?.data?.length
-  const cartTotalPrice = cart?.data?.map(item => (
+  const cartTotalPrice = cart?.map(item => (
     item.products_id.price
   ));
 

@@ -14,6 +14,8 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Admin from './pages/Admin';
 import Profile from './pages/Profile';
+import Stripesucess from './pages/Stripe/StripeSucess';
+import Stripefailed from './pages/Stripe/StripeFailed';
 // CSS
 import './App.css';
 
@@ -60,7 +62,7 @@ const App = () => {
   const fetchCart = async () => {
     try {
       const response = await axios.request(options);
-      setCart(response);
+      setCart(response.data);
     }
     catch (error) {
       console.error(error)
@@ -80,6 +82,7 @@ const App = () => {
             <Cart cart={cart}
               cartVisible={cartVisible}
               fetchCart={fetchCart}
+              setCart={setCart}
               setCartVisible={setCartVisible}
               setGuestCart={setGuestCart} />
             : null
@@ -109,6 +112,8 @@ const App = () => {
           <Route path='login' element={<LogIn />} />
           <Route path='signup' element={<SignUp />} />
           <Route path='profile' element={<Profile />} />
+          <Route path='payment/success' element={<Stripesucess />}/>
+          <Route path='payment/failed' element={<Stripefailed />}/>
         </Routes>
       </UserContext.Provider>
 
