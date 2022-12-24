@@ -29,7 +29,7 @@ const Profile = () => {
     const fetchProfile = async () => {
         const options = {
             method: 'GET',
-            url: 'https://ecommerce-backnd.herokuapp.com/api/v1/profile',
+            url: 'https://ecommerce-backend-production-b06b.up.railway.app/api/v1/profile',
             headers: {
                 Accept: 'application/json',
                 Authorization: `Bearer ${user.user[0].token}`
@@ -61,7 +61,7 @@ const Profile = () => {
                     Authorization: `Bearer ${user.user[0].token}`
                 }
             };
-            const response = await axios.put('https://ecommerce-backnd.herokuapp.com/api/v1/updateuser', updatedUser, options)
+            const response = await axios.put('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/updateuser', updatedUser, options)
             console.log(response)
         }
         catch (error) {

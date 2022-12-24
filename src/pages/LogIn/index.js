@@ -23,7 +23,7 @@ const LogIn = () => {
     const logInUser = async (data) => {
 
         try {
-            const response = await axios.post('https://ecommerce-backnd.herokuapp.com/api/v1/login', data)
+            const response = await axios.post('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/login', data)
             user.setUser([response.data]);
             if (response.status === 200) {
                 console.log("user logged in")

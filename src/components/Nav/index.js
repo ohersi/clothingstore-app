@@ -52,7 +52,7 @@ const Nav = ({ cart, guestCart, cartVisible, fetchCart, setUser, setCartVisible 
       <nav className='fixed top-0 left-0 right-0 nav-container min-h-13 text-lg'>
         <div className='max-w-6x1 mx-auto px-3'>
           <div className='flex justify-around'>
-            <Link className='hidden md:flex py-4 hover:text-red-600' to='/'>LOGO</Link>
+            <Link className='hidden md:flex py-4 hover:text-red-600' to='/'>HOME</Link>
             <Link className='hidden md:flex py-4' to='collection'>SHOP</Link>
             {
               user.user.username == 'admin' ?

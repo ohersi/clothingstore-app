@@ -35,7 +35,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
             try {
                 const options = {
                     method: 'DELETE',
-                    url: `https://ecommerce-backnd.herokuapp.com/api/v1/deleteitem/${id}`,
+                    url: `https://ecommerce-backend-production-b06b.up.railway.app/api/v1/deleteitem/${id}`,
                     headers: {
                         Accept: 'application/json',
                         Authorization: `Bearer ${user.user[0]?.token}`
@@ -53,29 +53,32 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
 
     const updateCartQuantity = async (cart) => {
 
-        await Promise.all(cart.map(item => {
-            const editedCart = {
-                quantity: item.quantity
-            }
-            try {
-                // EDIT CART QUANTITY 
-                const options = {
-                    headers: {
-                        Accept: 'application/json',
-                        Authorization: `Bearer ${user.user[0]?.token}`
-                    }
-                };
-                console.log("this is id: ", item.id, "this is editedCart: ", editedCart)
-                const response = axios.put(`https://ecommerce-backnd.herokuapp.com/api/v1/updatecart/${item.id}`, editedCart, options);
-                console.log("quantity increased")
-                if (response.status === 200) {
-                    console.log(`item has been updated!`)
+        if (!user.user.length == 0) {
+
+            await Promise.all(cart.map(item => {
+                const editedCart = {
+                    quantity: item.quantity
                 }
-            }
-            catch (error) {
-                console.error(error);
-            }
-        }))
+                try {
+                    // EDIT CART QUANTITY 
+                    const options = {
+                        headers: {
+                            Accept: 'application/json',
+                            Authorization: `Bearer ${user.user[0]?.token}`
+                        }
+                    };
+                    console.log("this is id: ", item.id, "this is editedCart: ", editedCart)
+                    const response = axios.put(`https://ecommerce-backend-production-b06b.up.railway.app/api/v1/updatecart/${item.id}`, editedCart, options);
+                    console.log("quantity increased")
+                    if (response.status === 200) {
+                        console.log(`item has been updated!`)
+                    }
+                }
+                catch (error) {
+                    console.error(error);
+                }
+            }))
+        }
         fetchCart();
     }
 
@@ -151,11 +154,11 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
                 users_id: item.user_id ? item.user_id : item.users.id
             }
         ))
-        
+
         console.log(checkoutCart);
         console.log(item)
 
-        const response = await axios.post(`https://ecommerce-backnd.herokuapp.com/api/v1/create-checkout-session`, checkoutCart);
+        const response = await axios.post(`https://ecommerce-backend-production-b06b.up.railway.app/api/v1/create-checkout-session`, checkoutCart);
         console.log(response);
         window.location.replace(`${response.data.session_url}`);
     }
@@ -203,7 +206,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
                             </div>
                         ))
                 }
-                <button id='checkout-btn' onClick={() => {stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart)}}>Check Out</button>
+                <button id='checkout-btn' onClick={() => { stripeCheckout(user.user.length ? cart : localStorageCart); updateCartQuantity(cart) }}>Check Out</button>
             </div>
         </div>
     );
