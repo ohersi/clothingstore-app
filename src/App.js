@@ -32,7 +32,7 @@ const App = () => {
   const fetchProducts = useCallback(
     async () => {
       try {
-        const response = await axios.get('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/collection/all');
+        const response = await axios.get('https://ecommerce-backend-z5ap.onrender.com/api/v1/collection/all');
         setProducts(response);
       }
       catch (error) {
@@ -42,7 +42,7 @@ const App = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/categories');
+      const response = await axios.get('https://ecommerce-backend-z5ap.onrender.com/api/v1/categories');
       setCategories(response);
     }
     catch (error) {
@@ -52,7 +52,7 @@ const App = () => {
 
   const options = {
     method: 'GET',
-    url: 'https://ecommerce-backend-production-b06b.up.railway.app/api/v1/cart',
+    url: 'https://ecommerce-backend-z5ap.onrender.com/api/v1/cart',
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${user[0]?.token}`

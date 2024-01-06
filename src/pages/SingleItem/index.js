@@ -45,7 +45,7 @@ const SingleItem = ({ productSelected, fetchCart, setGuestCart }) => {
                         Authorization: `Bearer ${user.user[0]?.token}`
                     }
                 };
-                const response = await axios.post('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/addtocart', cartItem, options);
+                const response = await axios.post('https://ecommerce-backend-z5ap.onrender.com/api/v1/addtocart', cartItem, options);
                 if (response.status === 200) {
                     console.log(`item has been added to cart!`)
                 }

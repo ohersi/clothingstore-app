@@ -22,7 +22,7 @@ const SignUp = () => {
     const signUpUser = async (data) => {
 
         try {
-            const response = await axios.post('https://ecommerce-backend-production-b06b.up.railway.app/api/v1/register', data)
+            const response = await axios.post('https://ecommerce-backend-z5ap.onrender.com/api/v1/register', data)
             user.setUser([response.data]);
             if (response.status === 200) {
                 console.log("user created")
