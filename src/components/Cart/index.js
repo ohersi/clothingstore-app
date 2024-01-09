@@ -35,7 +35,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
             try {
                 const options = {
                     method: 'DELETE',
-                    url: `https://ecommerce-backend-z5ap.onrender.com/api/v1/deleteitem/${id}`,
+                    url: `${process.env.REACT_APP_API_URL}/api/v1/deleteitem/${id}`,
                     headers: {
                         Accept: 'application/json',
                         Authorization: `Bearer ${user.user[0]?.token}`
@@ -68,7 +68,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
                         }
                     };
                     console.log("this is id: ", item.id, "this is editedCart: ", editedCart)
-                    const response = axios.put(`https://ecommerce-backend-z5ap.onrender.com/api/v1/updatecart/${item.id}`, editedCart, options);
+                    const response = axios.put(`${process.env.REACT_APP_API_URL}/api/v1/updatecart/${item.id}`, editedCart, options);
                     console.log("quantity increased")
                     if (response.status === 200) {
                         console.log(`item has been updated!`)
@@ -158,7 +158,7 @@ const Cart = ({ cart, cartVisible, fetchCart, setCart, setCartVisible, setGuestC
         console.log(checkoutCart);
         console.log(item)
 
-        const response = await axios.post(`https://ecommerce-backend-z5ap.onrender.com/api/v1/create-checkout-session`, checkoutCart);
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/create-checkout-session`, checkoutCart);
         console.log(response);
         window.location.replace(`${response.data.session_url}`);
     }

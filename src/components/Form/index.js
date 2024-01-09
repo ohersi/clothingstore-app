@@ -46,15 +46,15 @@ const Form = ({
                 if (editForm) {
                     // EDIT - UPDATING PRODUCT
                     toggleSelected ?
-                        await axios.put(`https://ecommerce-backend-z5ap.onrender.com/api/v1/products/${productToEdit.id}`, newProduct) :
-                        await axios.put(`https://ecommerce-backend-z5ap.onrender.com/api/v1/category/${categoryToEdit.id}`, newCategory)
+                        await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/products/${productToEdit.id}`, newProduct) :
+                        await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/category/${categoryToEdit.id}`, newCategory)
                     console.log(toggleSelected ? 'product editing url' : "category editing url")
                 }
                 else {
                     // ADDING PROODUCT
                     const response = toggleSelected ?
-                        await axios.post('https://ecommerce-backend-z5ap.onrender.com/api/v1/addproduct', newProduct)
-                        : axios.post('https://ecommerce-backend-z5ap.onrender.com/api/v1/addcategory', newCategory)
+                        await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/addproduct`, newProduct)
+                        : axios.post(`${process.env.REACT_APP_API_URL}/api/v1/addcategory`, newCategory)
                     if (response.status === 200) {
                         setName('')
                         setDescription('')

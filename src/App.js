@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 // Components
 import Nav from './components/Nav';
 import Cart from './components/Cart';
@@ -32,7 +32,7 @@ const App = () => {
   const fetchProducts = useCallback(
     async () => {
       try {
-        const response = await axios.get('https://ecommerce-backend-z5ap.onrender.com/api/v1/collection/all');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/collection/all`);
         setProducts(response);
       }
       catch (error) {
@@ -42,7 +42,7 @@ const App = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://ecommerce-backend-z5ap.onrender.com/api/v1/categories');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/categories`);
       setCategories(response);
     }
     catch (error) {
@@ -52,7 +52,7 @@ const App = () => {
 
   const options = {
     method: 'GET',
-    url: 'https://ecommerce-backend-z5ap.onrender.com/api/v1/cart',
+    url: `${process.env.REACT_APP_API_URL}/api/v1/cart`,
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${user[0]?.token}`

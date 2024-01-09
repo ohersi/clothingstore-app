@@ -18,7 +18,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
 
     const deleteProduct = async (id) => {
         try {
-            const response = await axios.delete(`https://ecommerce-backend-z5ap.onrender.com/api/v1/products/${id}`)
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/products/${id}`)
             fetchProducts();
             console.log("product deleted")
         }
@@ -29,7 +29,7 @@ const Admin = ({ products, categories, fetchProducts, fetchCategories }) => {
 
     const deleteCategory = async (id) => {
         try {
-            const response = await axios.delete(`https://ecommerce-backend-z5ap.onrender.com/api/v1/category/${id}`)
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/category/${id}`)
             fetchCategories();
             console.log("category deleted")
         }
